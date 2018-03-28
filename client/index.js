@@ -15,3 +15,17 @@ ReactDOM.render(
   </Router>,
   document.getElementById('app')
 );
+
+import store, { gotMessagesFromServer } from './store';
+
+const unsubscribe = store.subscribe(function () {
+  console.log('----------------');
+  console.log('State changed!!', store.getState());
+});
+
+store.dispatch(gotMessagesFromServer([{ author: 'Milton', content: 'Hey @channel' }]));
+store.dispatch(gotMessagesFromServer([{ author: 'Marcy', content: 'Anybody @here want ice cream?' }]));
+
+unsubscribe();
+
+store.dispatch(gotMessagesFromServer([{ author: 'Astro', content: 'To infinity and beyond!' }]));
