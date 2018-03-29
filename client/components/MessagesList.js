@@ -9,7 +9,6 @@ export default class MessagesList extends Component {
 
   constructor () {
     super();
-    //this.state = { messages: [] }; -- old
     this.state = store.getState();
   }
 
@@ -36,7 +35,7 @@ export default class MessagesList extends Component {
         <ul className="media-list">
           { filteredMessages.map(message => <Message message={message} key={message.id} />) }
         </ul>
-        <NewMessageEntry />
+        <NewMessageEntry channelId={channelId} />
       </div>
     );
   }
