@@ -8,24 +8,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Main } from './components';
+import store from './store';
+import { Provider } from 'react-redux';
 
 ReactDOM.render(
-  <Router>
-    <Main />
-  </Router>,
+  <Provider store={store}>
+    <Router>
+      <Main />
+    </Router>
+  </Provider>,
   document.getElementById('app')
 );
-
-import store, { gotMessagesFromServer } from './store';
-
-const unsubscribe = store.subscribe(function () {
-  console.log('----------------');
-  console.log('State changed!!', store.getState());
-});
-
-store.dispatch(gotMessagesFromServer([{ author: 'Milton', content: 'Hey @channel' }]));
-store.dispatch(gotMessagesFromServer([{ author: 'Marcy', content: 'Anybody @here want ice cream?' }]));
-
-unsubscribe();
-
-store.dispatch(gotMessagesFromServer([{ author: 'Astro', content: 'To infinity and beyond!' }]));

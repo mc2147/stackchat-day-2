@@ -10,6 +10,13 @@ router.get('/', function (req, res, next) {
     .catch(next);
 });
 
+// GET /api/channels/:channelId
+router.get('/:channelId', function (req, res, next) {
+  Channel.findById(req.params.channelId)
+    .then(channel => res.json(channel))
+    .catch(next);
+});
+
 // GET /api/channels/:channelId/messages
 router.get('/:channelId/messages', function (req, res, next) {
   const channelId = req.params.channelId;

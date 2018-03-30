@@ -78,6 +78,10 @@ body {
               margin-right: 10px;
             }
           }
+
+          &:last-child {
+            text-decoration: underline;
+          }
         }
       }
     }
@@ -99,6 +103,10 @@ body {
 
       form {
         margin: 0 10px 0 0;
+
+        label {
+          margin-right: 1rem;
+        }
       }
     }
 
